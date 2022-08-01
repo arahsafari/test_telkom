@@ -56,8 +56,8 @@ Menurut anda apakah tujuan penggunaan microservices?
 
 Jawaban:
 
-- tujuan microservices biasanya agar mempermudah tim dalam mempelajari service baru
-dan dalam pengerjaan complex architecture menjadi lebih mudah di breakdown , berbeda
+- tujuan microservices biasanya agar mempermudah tim dalam mempelajari service baru karena scopenya
+yang di perkecil sampai level domain dan dalam pengerjaan complex architecture menjadi lebih mudah di breakdown kepada tim-tim yang lebih kecil , berbeda
 dengan monolith ketika system tersebut udah jadi dan ada newcomer maka newcomer tersebut
 akan kesulitan untuk membaca system yang sebesar itu.
 - microservices juga mempersingkat waktu jiga ada major refactor code , sehingga
@@ -66,12 +66,21 @@ yang ketika ingin refactor biasanya memakan waktu yang sangat lama
 - microservice juga dapat membuat servicenya tidak dependant / loosely coupled terhadap service lain
 dimana service tersebut tidak akan mengalami failure jika ada failure di salah satu
 node service tersebut
-- 
+- database microservice dapat di sesuaikan terhadap data yang akan kita olah terhadap service tersebut
 
 
 
 #### Soal5
 5. Buatlah Sebuah backend api dengan golang untuk melakukan health check kepada service backend
+
+step 1
 ```shell script
 $ make soal5
 ```
+
+step 2
+```shell script
+$ docker ps -a
+```
+untuk melihat status health dari service tersebut
+

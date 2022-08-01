@@ -9,13 +9,7 @@ import (
 func main() {
 	listPecahan := []int{100000, 50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100}
 
-	fmt.Print("Input Jumlah Uang: ")
-	var uang int
-	_ , err := fmt.Scanln(&uang)
-	if err != nil {
-		fmt.Println("err :" , err)
-	}
-
+	uang := scanInput("Input Jumlah Uang: ")
 	pecahan(uang, listPecahan)
 }
 
@@ -50,4 +44,16 @@ func prettyPrint(data interface{}) string {
 	//s, _ := json.MarshalIndent(i, "", "\t")
 
 	return string(JSON)
+}
+
+func scanInput(message string) int{
+	var data int
+
+	fmt.Print(message)
+	_ , err := fmt.Scanln(&data)
+	if err != nil {
+		fmt.Println("err :" , err)
+	}
+
+	return data
 }
