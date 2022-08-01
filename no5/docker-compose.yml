@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  service_no5:
+    container_name: service_no5
+    hostname: "service_no5"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    healthcheck:
+      test: curl -sS http://localhost:8080
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: always
+    ports:
+      - "3000:8080"

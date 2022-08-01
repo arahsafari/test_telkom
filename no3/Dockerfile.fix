@@ -1,0 +1,33 @@
+FROM golang as build
+
+#=============
+#ADD . /go/src/github.com/telkomdev/indihome/backend
+#harusnya make COPY seperti dibawah ini
+COPY . /go/src/github.com/telkomdev/indihome/backend
+#=============
+WORKDIR /go/src/github.com/telkomdev/indihome
+
+#=============
+#RUN go get github.com/tools/godep
+#RUN godep restore
+#RUN go install github.com/telkomdev/indihome
+#dibikin 1 line bagusnya
+
+RUN go get github.com/tools/godep && godep restore && go install github.com/telkomdev/indihome
+#=============
+
+
+#=============
+
+#ENTRYPOINT /indihome
+#LISTEN 80 #ini harusnya expose
+
+#dibikin multistage agar image sizenya kecil
+FROM alpine
+RUN apk --update add curl
+COPY --from=build /go/bin/indihome /indihome
+EXPOSE 80
+ENTRYPOINT /indihome
+
+#=============
+
